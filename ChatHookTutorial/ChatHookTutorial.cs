@@ -83,12 +83,23 @@ namespace ChatHookTutorial
                     TShockAPI.Commands.HandleCommand(player, "/login");
                     return;
                 }
+                else
+                {
+                    string[] words = args.Text.Split();
 
-                string[] words = args.Text.Split();
+                    string login;
 
-                string pass = words[1];
+                    if (words.Count() >= 3)
+                    {
+                        login = words[1] + " " + words[2];
+                    }
+                    else
+                    {
+                        login = words[1];
+                    }
 
-                TShockAPI.Commands.HandleCommand(player, "/login " + pass); 
+                    TShockAPI.Commands.HandleCommand(player, "/login " + login);
+                }
             }
         }
     }
