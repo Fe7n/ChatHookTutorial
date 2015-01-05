@@ -31,7 +31,7 @@ namespace ChatHookTutorial
 
         public override string Description
         {
-            get { return "Changes command prefix for login"; }
+            get { return "Changes command prefix for login and register"; }
         }
 
         public ChatHookTutorial(Main game)
@@ -71,9 +71,14 @@ namespace ChatHookTutorial
             {
                 args.Handled = true;
 
-                player.SendInfoMessage("Instead of /login, we use .login");
+                player.SendInfoMessage("Instead of /login, please use .login");
             }
+            if (args.Text.StartsWith("/register ") || args.Text.Length == 9 && args.Text.StartsWith("/register"))
+            {
+                args.Handled = true;
 
+                player.SendInfoMessage("Instead of /register, please use .register");
+            }
             if (args.Text.StartsWith(".login ") || args.Text.Length == 6 && args.Text.StartsWith(".login"))
             {
                 args.Handled = true;
@@ -99,6 +104,33 @@ namespace ChatHookTutorial
                     }
 
                     TShockAPI.Commands.HandleCommand(player, "/login " + login);
+                }
+            }
+            if (args.Text.StartsWith(".register ") || args.Text.Length == 9 && args.Text.StartsWith(".register"))
+            {
+                args.Handled = true;
+
+                if (args.Text.Length == 9)
+                {
+                    TShockAPI.Commands.HandleCommand(player, "/register");
+                    return;
+                }
+                else
+                {
+                    string[] words = args.Text.Split();
+
+                    string login;
+
+                    if (words.Count() >= 3)
+                    {
+                        login = words[1] + " " + words[2];
+                    }
+                    else
+                    {
+                        login = words[1];
+                    }
+
+                    TShockAPI.Commands.HandleCommand(player, "/register " + login);
                 }
             }
         }
