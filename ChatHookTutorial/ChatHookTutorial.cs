@@ -67,19 +67,14 @@ namespace ChatHookTutorial
                 return;
             }
 
-            if (args.Text.StartsWith("/login ") || args.Text.Length == 6 && args.Text.StartsWith("/login"))
+
+            if (args.Text.ToLower().StartsWith("/login ") || args.Text.Length == 6 && args.Text.ToLower().StartsWith("/login"))
             {
                 args.Handled = true;
 
                 player.SendInfoMessage("Instead of /login, please use .login");
             }
-            if (args.Text.StartsWith("/register ") || args.Text.Length == 9 && args.Text.StartsWith("/register"))
-            {
-                args.Handled = true;
-
-                player.SendInfoMessage("Instead of /register, please use .register");
-            }
-            if (args.Text.StartsWith(".login ") || args.Text.Length == 6 && args.Text.StartsWith(".login"))
+            if (args.Text.ToLower().StartsWith(".login ") || args.Text.Length == 6 && args.Text.ToLower().StartsWith(".login"))
             {
                 args.Handled = true;
 
@@ -106,7 +101,14 @@ namespace ChatHookTutorial
                     TShockAPI.Commands.HandleCommand(player, "/login " + login);
                 }
             }
-            if (args.Text.StartsWith(".register ") || args.Text.Length == 9 && args.Text.StartsWith(".register"))
+
+            if (args.Text.ToLower().StartsWith("/register ") || args.Text.Length == 9 && args.Text.ToLower().StartsWith("/register"))
+            {
+                args.Handled = true;
+
+                player.SendInfoMessage("Instead of /register, please use .register");
+            }
+            if (args.Text.ToLower().StartsWith(".register ") || args.Text.Length == 9 && args.Text.ToLower().StartsWith(".register"))
             {
                 args.Handled = true;
 
