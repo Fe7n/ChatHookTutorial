@@ -10,7 +10,7 @@ using TerrariaApi.Server;
 
 namespace ChatHookTutorial
 {
-    [ApiVersion(1, 16)]
+    [ApiVersion(1, 17)]
     public class ChatHookTutorial : TerrariaPlugin
     {
         #region Plugin Info
