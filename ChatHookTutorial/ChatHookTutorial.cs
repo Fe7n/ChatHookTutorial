@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using TShockAPI;
-using TShockAPI.Hooks;
 using Terraria;
 using TerrariaApi.Server;
 
 
 namespace ChatHookTutorial
 {
-    [ApiVersion(1, 17)]
+	[ApiVersion(1, 22)]
     public class ChatHookTutorial : TerrariaPlugin
     {
         #region Plugin Info
